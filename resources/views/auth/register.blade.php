@@ -72,16 +72,6 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-6 col-md-offset-4 @if ($errors->has('g-recaptcha-response')) has-error @endif">
-                {!! app('captcha')->display(); !!}
-                @if ($errors->has('g-recaptcha-response'))
-                <span class="help-block">
-                    <strong>Captcha required</strong>
-                </span>
-                @endif
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Register

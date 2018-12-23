@@ -34,18 +34,9 @@ class StorePaste extends FormRequest
     public function messages()
     {
         return [
-            'pasteContent.required' => 'Your paste cannot be empty',
-            'pastePassword.required_if' => 'Please enter a password',
-            'pasteTitle.max' => 'Title must not exceed 70 characters',
-            'g-recaptcha-response.required' => 'Captcha required',
-            'g-recaptcha-response.captcha' => 'Captcha required'
+            'pasteContent.required' => 'Your paste cannot be empty.',
+            'pastePassword.required_if' => 'Please enter a password.',
+            'pasteTitle.max' => 'Title must not exceed 70 characters.',
         ];
-    }
-
-    public function withValidator($validator)
-    {
-        $validator->sometimes('g-recaptcha-response', 'required|captcha', function ($input) {
-            return !\Auth::check();
-        });
     }
 }

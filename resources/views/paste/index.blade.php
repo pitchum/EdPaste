@@ -93,17 +93,6 @@
 				</span>
 				@endif
 			</div>
-			{{-- Le captcha n'aparaît que pour les users non-id --}}
-			@if (!Auth::check())
-			<div class="form-group col-sm-3 @if ($errors->has('g-recaptcha-response')) has-error @endif">
-				{!! app('captcha')->display(); !!}
-				@if ($errors->has('g-recaptcha-response'))
-				<span class="help-block">
-					<strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-				</span>
-				@endif
-			</div>
-			@endif
 		</div>
 		<div class="row">
 			<div class="form-group text-center">
@@ -116,7 +105,7 @@
 				<div class="checkbox">
 					<label><input type="checkbox" name="noSyntax">Disable syntax highlighting</label>
 				</div>
-				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!Auth::check()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools and can bypass captchas" @endif>Submit</button>
+				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!Auth::check()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>Submit</button>
 			</div>
 		</div>
 
