@@ -43,6 +43,12 @@
             <input id="email" type="text" class="form-control" name="email" maxlength="50" value="{{ $user->email }}" >
           </div>
         </div>
+        <div class="form-group{{ $errors->has('currentpassword') ? ' has-error' : '' }}">
+          <label for="currentpassword" class="col-md-4 control-label">Current password</label>
+          <div class="col-md-3">
+            <input id="currentpassword" type="password" class="form-control" name="currentpassword" maxlength="100" placeholder="Leave blank if password unchanged" >
+          </div>
+        </div>
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
           <label for="password" class="col-md-4 control-label">New password</label>
           <div class="col-md-3">
@@ -50,15 +56,9 @@
           </div>
         </div>
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-          <label for="passwordconfirm" class="col-md-4 control-label">Confirmation</label>
+          <label for="passwordconfirm" class="col-md-4 control-label">Confirm password</label>
           <div class="col-md-3">
             <input id="passwordconfirm" type="password" class="form-control" name="passwordconfirm" maxlength="100" placeholder="Leave blank if password unchanged" >
-          </div>
-        </div>
-        <div class="form-group{{ $errors->has('currentpassword') ? ' has-error' : '' }}">
-          <label for="currentpassword" class="col-md-4 control-label">Current password</label>
-          <div class="col-md-3">
-            <input id="currentpassword" type="password" class="form-control" name="currentpassword" maxlength="100" placeholder="Leave blank if password unchanged" >
           </div>
         </div>
         <div class="form-group">

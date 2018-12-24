@@ -53,7 +53,7 @@
 						$("#pasteContent").autoGrow();
 					});
 				</script>
-				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="Paste your text here...">{{ old('pasteContent') }}</textarea>
+				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="Paste your text here..." style="font-family: monospace;">{{ old('pasteContent') }}</textarea>
 				@if ($errors->has('pasteContent'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pasteContent') }}</strong>

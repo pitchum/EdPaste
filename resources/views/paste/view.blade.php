@@ -66,7 +66,7 @@
 	@if ($expiration == "Expired")
 	<div class="alert alert-info" role="alert">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<i>This paste has expired, however since you've wrote it you may view it whenever you want.</i>
+		<i>This paste has expired, however since you wrote it you may view it whenever you want.</i>
 	</div>
 	@elseif ($expiration == "Burn after reading (next time)")
 	<div class="alert alert-warning" role="alert">
@@ -97,7 +97,7 @@
 						</button>
 						<h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $title }}</i>" ?</h4>
 					</div>
-					<div class="modal-body">Are you sure ? You <b>cannot</b> undo this !</div>
+					<div class="modal-body">Are you sure? You <b>cannot</b> undo this!</div>
 					<div class="modal-footer">
 						<a class="btn btn-danger btn-sm" href="/users/delete/{{ $link }}" role="button">Yes</a>
 						<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -117,24 +117,16 @@
 				</script>
 				<li><i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Username"></i> <i>{{ $username }}</i></li>
 				<li><i class="fa fa-calendar" data-toggle="tooltip" data-placement="bottom" title="Date of creation"></i> <i data-toggle="tooltip" data-placement="bottom" title="{{ $fulldate }}">{{ $date }}</i></li>
-				<li><i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="Times viewed"></i> <i>{{ $views }} view(s)</i></li>
+				<li><i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="Times viewed"></i> <i>{{ $views }} view{{ $views == 1 ? '' : 's' }}</i></li>
 				{{-- Expiration cachée si xs --}}
-				@if ($expiration == "Never")
-				<li class="hidden-xs"><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="Expiration"></i> <i>{{ $expiration }}</i></li>
-				@else
-				<li><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="Expiration"></i> <i>{{ $expiration }}</i></li>
-				@endif
-				
+				<li @if ($expiration == "Never") class="hidden-xs" @endif><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="Expiration"></i> <i>{{ $expiration }}</i></li>
+
 				{{-- Privacy cachée si xs --}}
-				@if ($privacy == "Public")
-				<li class="hidden-xs"><i class="fa fa-lock" data-toggle="tooltip" data-placement="bottom" title="Privacy"></i> <i>{{ $privacy }}</i></li>
-				@else
-				<li><i class="fa fa-lock" data-toggle="tooltip" data-placement="bottom" title="Privacy"></i> <i>{{ $privacy }}</i></li>
-				@endif
+				<li @if ($privacy == "Public") class="hidden-xs" @endif><i class="fa fa-lock" data-toggle="tooltip" data-placement="bottom" title="Privacy"></i> <i>{{ $privacy }}</i></li>
 			</ul>
 		</div>
 	</div>
-	
+
 	{{-- N'est formaté que si le SH est activé --}}
 	<div class="row" @if ($noSyntax == true) style="margin-bottom:20px;" @endif>
 		<div class="col-sm-12">
@@ -142,15 +134,5 @@
 			<pre id="paste"><code>@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
 		</div>
 	</div>
-	
-	{{-- N'apparaît que si le SH est activé --}}
-	@if ($noSyntax == false)
-	<div class="row" style="margin-bottom:20px;">
-		<div class="col-sm-12">
-			<label for="noFormatPaste"><i>Plain-text</i></label>
-			<i><textarea class="form-control input-sm" id="noFormatPaste" rows="25" readonly="true">{{ $content }}</textarea></i>
-		</div>
-	</div>
-	@endif
 </div>
 @endsection

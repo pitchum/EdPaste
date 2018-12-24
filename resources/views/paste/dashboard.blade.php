@@ -33,7 +33,7 @@
           <th class="hidden-xs">Content</th>
           <th class="hidden-xs"></th>
           <th class="hidden-xs"></th>
-          <th class="hidden-xs">Views</th>
+          <th>Views</th>
           <th>Creation</th>
           <th></th>
         </tr>
@@ -45,19 +45,19 @@
       <td class="hidden-xs"><i>@if (!$userPaste->noSyntax) <i class="fa fa-file-code-o"></i> &nbsp; @endif @if (strlen($userPaste->content) < 90) {{ $userPaste->content}} @else {{ mb_substr($userPaste->content,0,90,'UTF-8') }}... @endif</i></td>
       {{--  Bloc d'infos  --}}
       <td class="hidden-xs">
-        @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i> 
-        @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i> 
-        @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif 
+        @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i>
+        @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i>
+        @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif
       </td>
       <td class="hidden-xs">
-        @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Never expires"></i> 
+        @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Never expires"></i>
         @elseif ($userPaste->burnAfter == "1") <i class="fa fa-exclamation-circle fa-lg" data-toggle="tooltip" data-placement="bottom" title="Burn after reading"></i>
-        @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expired"></i> 
+        @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expired"></i>
         @else <i class="fa fa-hourglass fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expiration set"></i>@endif
       </td>
       <td> {{ $userPaste->views }}</td>
       {{-- Là on repasse à la date --}}
-      <td>{{ $userPaste->created_at->format('M jS, Y') }}</td>
+      <td>{{ $userPaste->created_at->format('M j, Y') }}</td>
       <td>
         <button class="btn btn-danger btn-sm pull-right" type="button" data-toggle="modal" data-target="#delete{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->iteration }}"><i class="fa fa-trash-o"></i></button></td>
       </tr>
@@ -70,7 +70,7 @@
               </button>
               <h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $userPaste->title }}</i>" ?</h4>
             </div>
-            <div class="modal-body">Are you sure ? You <b>cannot</b> undo this !</div>
+            <div class="modal-body">Are you sure? You <b>cannot</b> undo this!</div>
             <div class="modal-footer">
               <a class="btn btn-danger btn-sm" href="/users/delete/{{ $userPaste->link }}" role="button">Yes</a>
               <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -81,4 +81,3 @@
       @endforeach
     </tbody>
   </table>
-  
