@@ -16,10 +16,12 @@ use \Carbon;
 class PasteController extends Controller
 {
 	public function index(){
+    if (!Auth::check()) return redirect('/login');
 		return view('paste/index');
 	}
 
 	public function submit(Requests\StorePaste $request){
+    if (!Auth::check()) return redirect('/login');
     $title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
 
 		$expiration = Input::get('expire');
