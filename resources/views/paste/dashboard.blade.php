@@ -38,28 +38,27 @@
           <th></th>
         </tr>
       </thead>
-    </tbody>
-    @foreach ($userPastes as $userPaste)
-    <tr>
-      <td><a href="/{{ $userPaste->link }}">@if (strlen($userPaste->title) <= 20) {{ $userPaste->title}} @else {{ mb_substr($userPaste->title,0,20,'UTF-8') }}... @endif</a></td>
-      <td class="hidden-xs"><i>@if (!$userPaste->noSyntax) <i class="fa fa-file-code-o"></i> &nbsp; @endif @if (strlen($userPaste->content) < 90) {{ $userPaste->content}} @else {{ mb_substr($userPaste->content,0,90,'UTF-8') }}... @endif</i></td>
-      {{--  Bloc d'infos  --}}
-      <td class="hidden-xs">
-        @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i>
-        @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i>
-        @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif
-      </td>
-      <td class="hidden-xs">
-        @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Never expires"></i>
-        @elseif ($userPaste->burnAfter == "1") <i class="fa fa-exclamation-circle fa-lg" data-toggle="tooltip" data-placement="bottom" title="Burn after reading"></i>
-        @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expired"></i>
-        @else <i class="fa fa-hourglass fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expiration set"></i>@endif
-      </td>
-      <td> {{ $userPaste->views }}</td>
-      {{-- Là on repasse à la date --}}
-      <td>{{ $userPaste->created_at->format('M j, Y') }}</td>
-      <td>
-        <button class="btn btn-danger btn-sm pull-right" type="button" data-toggle="modal" data-target="#delete{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->iteration }}"><i class="fa fa-trash-o"></i></button></td>
+      <tbody>
+      @foreach ($userPastes as $userPaste)
+      <tr>
+        <td><a href="/{{ $userPaste->link }}">@if (strlen($userPaste->title) <= 20) {{ $userPaste->title}} @else {{ mb_substr($userPaste->title,0,20,'UTF-8') }}... @endif</a></td>
+        <td class="hidden-xs"><i>@if (!$userPaste->noSyntax) <i class="fa fa-file-code-o"></i> &nbsp; @endif @if (strlen($userPaste->content) < 90) {{ $userPaste->content}} @else {{ mb_substr($userPaste->content,0,90,'UTF-8') }}... @endif</i></td>
+        {{--  Bloc d'infos  --}}
+        <td class="hidden-xs">
+          @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i>
+          @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i>
+          @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif
+        </td>
+        <td class="hidden-xs">
+          @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Never expires"></i>
+          @elseif ($userPaste->burnAfter == "1") <i class="fa fa-exclamation-circle fa-lg" data-toggle="tooltip" data-placement="bottom" title="Burn after reading"></i>
+          @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expired"></i>
+          @else <i class="fa fa-hourglass fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expiration set"></i>@endif
+        </td>
+        <td> {{ $userPaste->views }}</td>
+        {{-- Là on repasse à la date --}}
+        <td>{{ $userPaste->created_at->format('M j, Y') }}</td>
+        <td><button class="btn btn-danger btn-sm pull-right" type="button" data-toggle="modal" data-target="#delete{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->iteration }}"><i class="fa fa-trash-o"></i></button></td>
       </tr>
       <div class="modal fade" id="delete{{ $loop->iteration }}" tabindex="-1" role="dialog" aria-labelledby="preview" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -81,3 +80,6 @@
       @endforeach
     </tbody>
   </table>
+</div>
+</div>
+@endsection
