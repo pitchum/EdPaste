@@ -151,7 +151,7 @@ class PasteController extends Controller
       'content' => $paste->content,
       'expiration' => $expiration,
       'privacy' => $privacy,
-      'date' => $paste->created_at->format('M jS, Y'),
+      'date' => $paste->created_at->format('M j, Y'),
       'fulldate' => $paste->created_at->format('d/m/Y - H:i:s'),
       'noSyntax' => $paste->noSyntax,
     ]);
