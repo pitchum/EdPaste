@@ -214,7 +214,7 @@ class PasteController extends Controller
       if ($diffTimestamp > 604800) $expired = true;
       else $expired = false;
     }
-    elseif($paste->expiration == "expired") {
+    elseif($paste->expiration == "expired" || time() > strtotime($paste->expiration)) {
       $alreadyExpired = true;
       $expired = true;
     }
