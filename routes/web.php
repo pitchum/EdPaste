@@ -19,6 +19,8 @@ Route::get('/', 'PasteController@index');
 Route::post('/', 'PasteController@submit');
 Route::get('/{link}', 'PasteController@view')->where('link', '[a-zA-Z0-9]+');
 Route::post('/{link}', 'PasteController@view')->where('link', '[a-zA-Z0-9]+');
+Route::get('/edit/{link}', 'EditPasteController@index')->where('link', '[a-zA-Z0-9]+');
+Route::post('/edit/{link}', 'EditPasteController@edit')->where('link', '[a-zA-Z0-9]+');
 Route::get('/raw/{link}', 'PasteController@raw')->where('link', '[a-zA-Z0-9]+');
 // Route::post('/{link}', 'PasteController@password')->where('link', '[a-zA-Z0-9]+');
 Route::get('users/dashboard', 'UserController@dashboard');

@@ -130,7 +130,9 @@
 	{{-- N'est formaté que si le SH est activé --}}
 	<div class="row" @if ($noSyntax == true) style="margin-bottom:20px;" @endif>
 		<div class="col-sm-12">
-			<label for="paste"><i>@if ($noSyntax == false) Syntax-highlighted @else Plain-text @endif</i></label>@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">Raw paste</a> @endif </i>
+			<label for="paste"><i>@if ($noSyntax == false) Syntax-highlighted @else Plain-text @endif</i></label>
+			@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">Raw paste</a> @endif </i>
+			@if ($sameUser) <i class="pull-right" style="margin-right: 10px;"><a href="/edit/{{ $link }}">Edit paste</a> @endif </i>
 			<pre id="paste"><code>@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
 		</div>
 	</div>
