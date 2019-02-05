@@ -115,8 +115,8 @@
 						$('[data-toggle="tooltip"]').tooltip()
 					})
 				</script>
-				<li><i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Username"></i> <i>{{ $username }}</i></li>
-				<li><i class="fa fa-calendar" data-toggle="tooltip" data-placement="bottom" title="Date of creation"></i> <i data-toggle="tooltip" data-placement="bottom" title="{{ $fulldate }}">{{ $date }}</i></li>
+				<li><i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Username"></i> <i class="username">{{ $username }}</i></li>
+				<li><i class="fa fa-calendar" data-toggle="tooltip" data-placement="bottom" title="Date of creation"></i> <i class="date" data-toggle="tooltip" data-placement="bottom" title="{{ $fulldate }}">{{ $date }}</i></li>
 				<li><i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="Times viewed"></i> <i>{{ $views }} view{{ $views == 1 ? '' : 's' }}</i></li>
 				{{-- Expiration cachée si xs --}}
 				<li @if ($expiration == "Never") class="hidden-xs" @endif><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="Expiration"></i> <i>{{ $expiration }}</i></li>
@@ -133,7 +133,7 @@
 			<label for="paste"><i>@if ($noSyntax == false) Syntax-highlighted @else Plain-text @endif</i></label>
 			@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">Raw paste</a> @endif </i>
 			@if ($sameUser) <i class="pull-right" style="margin-right: 10px;"><a href="/edit/{{ $link }}">Edit paste</a> @endif </i>
-			<pre id="paste"><code>@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
+			<pre id="paste"><code class="code">@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
 		</div>
 	</div>
 </div>
