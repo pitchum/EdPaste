@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -30,5 +31,19 @@ class User extends Authenticatable
     public function pastes()
     {
         return $this->hasMany('App\Paste', 'userId');
+    }
+
+    public static function create_if_absent($username) {
+        $user = User::where('name', $username)->first();
+        if ($user == null) {
+            Log::debug('Inserting new user.', ['username' => $username]);
+            $user = User::create([
+                'name' => $username,
+                'email' => $username .'@example.local',
+                'password' => '',
+            ]);
+            Log::info('User created.', ['user' => $user]);
+        }
+        return $user;
     }
 }

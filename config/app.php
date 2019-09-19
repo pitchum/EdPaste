@@ -162,7 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        'Subfission\Cas\CasServiceProvider',
+        Subfission\Cas\CasServiceProvider::class,
 
         /*
          * Package Service Providers...
