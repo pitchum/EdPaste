@@ -1,5 +1,8 @@
 # EdPaste
-EdPaste is a Laravel 5.5 (PHP Framework)-driven self-hosted Pastebin. Demo : https://paste.edra.ovh
+
+EdPaste is self-hosted Pastebin.
+
+It is a Laravel 5.5 (PHP Framework)-driven self-hosted Pastebin. Demo : https://paste.edra.ovh
 
 ## Features :
 - Privacy options
@@ -8,6 +11,7 @@ EdPaste is a Laravel 5.5 (PHP Framework)-driven self-hosted Pastebin. Demo : htt
 - Password protection (server-side hashed)
 - User dashboard
 - Raw paste viewing
+- CAS authentication
 
 Just git clone this repo on your server, make the `public` folder your webserver's `DocumentRoot`, for instance with an Apache2.4 VirtualHost :
 ```
