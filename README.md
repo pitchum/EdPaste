@@ -24,6 +24,7 @@ Run a `composer install`/`php composer install` (depends of your configuration) 
 Rename `.env.example` to `.env` and run `php artisan key:generate` from the app's root path.
 Open `.env` and fill it with your database details
 Run `php artisan migrate` from the app's root path, and you're all done.
+Copy and adapt CAS configuration from `config/cas.example.php` to `config/cas.php`.
 
 Go to `http://your.vhost.server.com/` which leads to the DocumentRoot `/app/path/public`, and this should work !
 
