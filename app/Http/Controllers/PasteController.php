@@ -12,16 +12,27 @@ use Session;
 use Cookie;
 use DB;
 use \Carbon;
+use Cas;
 
 class PasteController extends Controller
 {
-	public function index(){
-		if (!Auth::check()) { return redirect('/login'); }
-		return view('paste/index');
-	}
+  public function index(){
+    if (!cas()->isAuthenticated()) {
+        cas()->authenticate();
+    }
+    $username = cas()->getCurrentUser();
+    $user = User::where('name', $username)->first();
+    return view('paste/index', [
+      'user' => $user,
+    ]);
+  }
 
 	public function submit(Requests\StorePaste $request){
-		if (!Auth::check()) { return redirect('/login'); }
+		if (!cas()->isAuthenticated()) {
+			cas()->authenticate();
+		}
+		$username = cas()->getCurrentUser();
+		$user = User::create_if_absent($username);
 		$title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
 
 		$expiration = Input::get('expire');
@@ -72,7 +83,7 @@ class PasteController extends Controller
 
 		Paste::create([
 			'link' => $generatedLink,
-			'userId' => (Auth::check()) ? Auth::id() : 0,
+			'userId' => ($user != null) ? $user->id : 0,
 			'views' => '0',
 			'title' => $title,
 			'content' => Input::get('pasteContent'),
@@ -91,7 +102,10 @@ class PasteController extends Controller
     $paste = Paste::where('link', $link)->firstOrFail();
 
     // Est-ce que l'utilisateur connecté est celui qui a écrit la paste ?
-    $isSameUser = ((Auth::user() == $paste->user && $paste->userId != 0)) ? true : false;
+    cas()->isAuthenticated();
+    $username = cas()->getCurrentUser();
+    $user = User::where('name', $username)->first();
+    $isSameUser = (($user->id == $paste->userId && $paste->userId != 0)) ? true : false;
 
     // Expiration de la paste
     if($paste->expiration != 0){
@@ -229,7 +243,7 @@ class PasteController extends Controller
         $paste->save();
       }
       // On regarde si le créateur est connecté, si oui il peut voir sa paste expirée, sinon 404
-          if(Auth::check()) {
+          if(cas()->isAuthenticated()) {
             if ($paste->userId != Auth::user()->id) {
               return view('errors/404');
             }
