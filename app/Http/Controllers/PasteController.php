@@ -102,10 +102,13 @@ class PasteController extends Controller
     $paste = Paste::where('link', $link)->firstOrFail();
 
     // Est-ce que l'utilisateur connecté est celui qui a écrit la paste ?
-    cas()->isAuthenticated();
-    $username = cas()->getCurrentUser();
-    $user = User::where('name', $username)->first();
-    $isSameUser = (($user->id == $paste->userId && $paste->userId != 0)) ? true : false;
+    if (cas()->isAuthenticated()) {
+      $username = cas()->getCurrentUser();
+      $user = User::where('name', $username)->first();
+      $isSameUser = (($user->id == $paste->userId && $paste->userId != 0)) ? true : false;
+    } else {
+      $isSameUser = false;
+    }
 
     // Expiration de la paste
     if($paste->expiration != 0){
