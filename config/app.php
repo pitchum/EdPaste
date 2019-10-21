@@ -162,13 +162,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Subfission\Cas\CasServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
-
-        //
+        Subfission\Cas\CasServiceProvider::class,
 
         /*
          * Application Service Providers...
