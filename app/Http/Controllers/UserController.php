@@ -25,19 +25,19 @@ class UserController extends Controller
 		return view('paste/dashboard', ['userPastes' => Auth::user()->pastes()->get()]);
 	}
 	public function delete($link){
-		if (!Auth::check()) return redirect('/');
+		if (!cas()->isAuthenticated()) return redirect('/');
 		$userPaste = Paste::where('link', $link)->firstOrFail();
 		if ($userPaste->userId != Auth::user()->id) return redirect('/login');
 		$userPaste->forceDelete();
 		return redirect('/users/dashboard');
 	}
 	public function account(){
-		if (!Auth::check()) return redirect('/login');
+		if (!cas()->isAuthenticated()) return redirect('/login');
 		$user = User::where('id', Auth::user()->id)->first();
 		return view('paste.account', ['user' => $user]);
 	}
 	public function editAccount(Request $request){
-		if (!Auth::check()) return redirect('/login');
+		if (!cas()->isAuthenticated()) return redirect('/login');
 		if (Input::get('password') != ""){
 			$this->validate($request, [
 				'name' => 'max:30|required',

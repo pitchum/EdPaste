@@ -5,7 +5,7 @@
 @section('navbar')
 <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
 {{--
-@if (Auth::check())
+@if (cas()->isAuthenticated())
 <li class="nav-item"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
 <li class="nav-item"><a href=" /logout" class="nav-link">Logout <i>({{ Auth::user()->name }})</i></a></li>
@@ -80,7 +80,7 @@
 				<select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
 					<option value="link">Unlisted, access with link</option>
 					<option value="password" @if ($errors->has('pastePassword')) selected="selected" @endif>Password-protected</option>
-					@if (Auth::check())
+					@if (cas()->isAuthenticated())
 					<option value="private">Private, only me</option>
 					@endif
 				</select>
@@ -107,7 +107,7 @@
 				<div class="checkbox">
 					<label><input type="checkbox" name="noSyntax">Disable syntax highlighting</label>
 				</div>
-				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!Auth::check()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>Submit</button>
+				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>Submit</button>
 			</div>
 		</div>
 
