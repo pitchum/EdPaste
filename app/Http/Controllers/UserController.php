@@ -18,22 +18,22 @@ class UserController extends Controller
 	// Every function in this controller requires auth
 	public function __construct()
 	{
-		$this->middleware('auth');
+		//$this->middleware('auth');
 	}
 	
 	public function dashboard(){
-		return view('paste/dashboard', ['userPastes' => Auth::user()->pastes()->get()]);
+		return view('paste/dashboard', ['userPastes' => User::getCurrentUser()->pastes()->get()]);
 	}
 	public function delete($link){
 		if (!cas()->isAuthenticated()) return redirect('/');
 		$userPaste = Paste::where('link', $link)->firstOrFail();
-		if ($userPaste->userId != Auth::user()->id) return redirect('/login');
+		if ($userPaste->userId != User::getCurrentUser()->id) return redirect('/login');
 		$userPaste->forceDelete();
 		return redirect('/users/dashboard');
 	}
 	public function account(){
 		if (!cas()->isAuthenticated()) return redirect('/login');
-		$user = User::where('id', Auth::user()->id)->first();
+		$user = User::where('id', User::getCurrentUser()->id)->first();
 		return view('paste.account', ['user' => $user]);
 	}
 	public function editAccount(Request $request){
@@ -53,9 +53,9 @@ class UserController extends Controller
 					'email' => 'required|email',
 					]);
 				}
-				$user = User::where('id', Auth::user()->id)->first();
+				$user = User::where('id', User::getCurrentUser()->id)->first();
 				$checkEmail = User::where('email', Input::get('email'))->first();
-				if (!is_null($checkEmail) && $checkEmail->id != Auth::user()->id) return Redirect::back()->withErrors(['Specified e-mail address already exists']);
+				if (!is_null($checkEmail) && $checkEmail->id != User::getCurrentUser()->id) return Redirect::back()->withErrors(['Specified e-mail address already exists']);
 				$user->name = Input::get('name');
 				$user->email = Input::get('email');
 				if (Input::get('password') != "") {

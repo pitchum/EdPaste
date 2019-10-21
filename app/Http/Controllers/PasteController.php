@@ -247,7 +247,7 @@ class PasteController extends Controller
       }
       // On regarde si le créateur est connecté, si oui il peut voir sa paste expirée, sinon 404
           if(cas()->isAuthenticated()) {
-            if ($paste->userId != Auth::user()->id) {
+            if ($paste->userId != User::getCurrentUser()->id) {
               return view('errors/404');
             }
           }
@@ -256,7 +256,7 @@ class PasteController extends Controller
     if ($paste->privacy == "private") {
       // On regarde si le créateur est connecté, si oui il peut voir sa paste expirée, sinon 404
       if(cas()->isAuthenticated()) {
-        if ($paste->userId != Auth::user()->id) {
+        if ($paste->userId != User::getCurrentUser()->id) {
           return view('errors/404');
         }
         else $privacy = "Private";
@@ -268,7 +268,7 @@ class PasteController extends Controller
       if ($diffTimestamp > 3) {
         // Ici on bypass le pass si l'user est le même
         if(cas()->isAuthenticated()) {
-          if ($paste->userId != Auth::user()->id) {
+          if ($paste->userId != User::getCurrentUser()->id) {
             // Si le cookie de password existe on le recheck un coup quand même
             if (Cookie::get($paste->link) !== null) {
               // On recheck le cookie et on envoie la view de password si le pass a été manipulé
