@@ -19,8 +19,8 @@ class EditPasteController extends Controller
     $paste = Paste::where('link', $link)->firstOrFail();
 
     // Est-ce que l'utilisateur connecté est celui qui a écrit la paste ?
-    if (Auth::user() != $paste->user || $paste->userId == 0) {
-      return abort('404');
+    if (!User::is_owner($paste) || $paste->userId == 0) {
+      return abort('403');
     }
 
     // Renvoi de la view
@@ -41,8 +41,8 @@ class EditPasteController extends Controller
     $paste = Paste::where('link', $link)->firstOrFail();
 
     // Est-ce que l'utilisateur connecté est celui qui a écrit la paste ?
-    if (Auth::user() != $paste->user || $paste->userId == 0) {
-      return abort('404');
+    if (!User::is_owner($paste) || $paste->userId == 0) {
+      return abort('403');
     }
 
     $title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');

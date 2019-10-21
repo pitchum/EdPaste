@@ -46,4 +46,23 @@ class User extends Authenticatable
         }
         return $user;
     }
+
+
+    /**
+     * This stupid function exists because I couldn't find how to
+     * properly implement CAS authentication as a Facade for Auth.
+     * When I have time I'll try to read all Laravel doc and find out.
+     */
+    public static function getCurrentUser() {
+        cas()->isAuthenticated(); // XXX workaround CAS_OutOfSequenceBeforeAuthenticationCallException (because I don't know how to use Laravel properly)
+        $username = cas()->getCurrentUser();
+        $user = User::where('name', $username)->first();
+        return $user;
+    }
+
+    public static function is_owner($paste) {
+        $user = User::getCurrentUser();
+        return (($user->id == $paste->userId && $paste->userId != 0)) ? true : false;
+    }
+
 }

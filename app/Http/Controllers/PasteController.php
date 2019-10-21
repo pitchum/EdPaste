@@ -318,7 +318,7 @@ class PasteController extends Controller
     // On crée la var envoyée à la view disant si l'user créateur est le viewer
     $sameUser = false;
     if(cas()->isAuthenticated()) {
-      if ($paste->userId == Auth::user()->id) {
+      if ($paste->userId == User::getCurrentUser()->id) {
       }
     }
     return response($paste->content, 200)->header('Content-Type', 'text/plain');
