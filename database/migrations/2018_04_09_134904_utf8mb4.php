@@ -12,15 +12,9 @@ class Utf8mb4 extends Migration
     * @return void
     */
     public function up() {
-        DB::unprepared('ALTER TABLE `pastes` CONVERT TO CHARACTER SET utf8mb4');
+        Schema::table('pastes', function (Blueprint $table) {
+            $table->charset = 'utf8';
+        });
     }
-    
-    /**
-    * Reverse the migrations.
-    *
-    * @return void
-    */
-    public function down() {
-        DB::unprepared('ALTER TABLE `pastes` CONVERT TO CHARACTER SET utf8');
-    }
+
 }
