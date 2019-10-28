@@ -86,6 +86,7 @@
 				<label for="privacy">Privacy</label>
 				<select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
 					<option value="link" {{ $privacy == "link" ? 'selected' : '' }}>Unlisted, access with link</option>
+					<option value="internal" {{ $privacy == "internal" ? 'selected' : '' }}>Internal</option>
 					<option value="password" {{ $privacy == "password" || $errors->has('pastePassword') ? 'selected' : '' }}>Password-protected</option>
 					<option value="private" {{ $privacy == "private" ? 'selected' : '' }}>Private, only me</option>
 				</select>

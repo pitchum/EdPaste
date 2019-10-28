@@ -48,6 +48,7 @@
         {{--  Bloc d'infos  --}}
         <td class="hidden-xs">
           @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i>
+          @elseif ($userPaste->privacy == "internal") <i class="fa fa-users fa-lg" data-toggle="tooltip" data-placement="bottom" title="Internal"></i>
           @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i>
           @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif
         </td>

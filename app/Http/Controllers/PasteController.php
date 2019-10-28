@@ -39,7 +39,7 @@ class PasteController extends Controller
 		$privacy = Input::get('privacy');
 
 		// Ici on vérifie que l'user a pas foutu le bronx dans les dropdown list
-		$possibleValuesPrivacy = array("link", "password", "private");
+		$possibleValuesPrivacy = array("link", "internal", "password", "private");
 		if (in_array($privacy, $possibleValuesPrivacy) == false) return view('paste/index');
 
 		// Si l'user a choisi password-protected, on hash son pass, sinon on met 'disabled' dans la variable
@@ -137,6 +137,13 @@ class PasteController extends Controller
     if ($paste->privacy == "private") {
       if($isSameUser) $privacy = "Private";
       else abort('404');
+    }
+    elseif ($paste->privacy == "internal"){
+      if (cas()->isAuthenticated()) {
+        $privacy = "Internal access";
+      } else {
+        return abort('404');
+      }
     }
     elseif ($paste->privacy == "password"){
       $privacy = "Password-protected";

@@ -79,6 +79,7 @@
 				<label for="privacy">Privacy</label>
 				<select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
 					<option value="link">Unlisted, access with link</option>
+					<option value="internal">Internal</option>
 					<option value="password" @if ($errors->has('pastePassword')) selected="selected" @endif>Password-protected</option>
 					@if (cas()->isAuthenticated())
 					<option value="private">Private, only me</option>
