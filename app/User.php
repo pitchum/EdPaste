@@ -57,6 +57,9 @@ class User extends Authenticatable
         cas()->isAuthenticated(); // XXX workaround CAS_OutOfSequenceBeforeAuthenticationCallException (because I don't know how to use Laravel properly)
         $username = cas()->getCurrentUser();
         $user = User::where('name', $username)->first();
+	if ($user == null) {
+		$user = User::create_if_absent($username);
+	}
         return $user;
     }
 
