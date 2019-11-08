@@ -1,12 +1,12 @@
 @extends('default')
 
-@section('pagetitle') Password prompt - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.password.prompt') }} @endsection
 
 @section('navbar')
-<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+<li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 {{--
 @if (cas()->isAuthenticated())
-<li class="nav-item"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
+<li class="nav-item"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
 <li class="nav-item"><a href=" /logout" class="nav-link">Logout <i>({{ User::getCurrentUser()->name }})</i></a></li>
 @else
@@ -27,8 +27,8 @@
             <input style="display:none" type="password" name="fakepasswordremembered"/>
             
             <div class="form-group @if (isset($wrongPassword)) has-error @endif" id="passwordInput">
-                <input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="Enter paste password" maxlength="40" autofocus="true">
-                <button type="submit" id="submit" class="btn @if (isset($wrongPassword)) btn-danger @else btn-outline-success @endif">Submit</button>
+                <input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="{{ __('edpaste.password.prompt') }}" maxlength="40" autofocus="true">
+                <button type="submit" id="submit" class="btn @if (isset($wrongPassword)) btn-danger @else btn-outline-success @endif">{{ __('edpaste.password.submit') }}</button>
             </div>
         </form>
     </div>

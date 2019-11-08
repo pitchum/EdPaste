@@ -34,10 +34,10 @@ class EditPaste extends FormRequest
     public function messages()
     {
         return [
-            'pasteContent.required' => 'Your paste cannot be empty.',
-            'pastePassword.required_if' => 'Please enter a password.',
-            'pasteTitle.max' => 'Title must not exceed 70 characters.',
-            'expire.required' => 'Paste expiration is required.',
+            'pasteContent.required' => __('edpaste.validation.error.notempty'),
+            'pastePassword.required_if' => __('edpaste.validation.error.password'),
+            'pasteTitle.max' => __('edpaste.validation.error.maxlength'),
+            'expire.required' => __('edpaste.validation.error.expiration.required'),
         ];
     }
 }

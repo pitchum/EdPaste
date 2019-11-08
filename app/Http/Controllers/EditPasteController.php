@@ -101,7 +101,7 @@ class EditPasteController extends Controller
   public function password($link, Request $request){
     $paste = Paste::where('link', $link)->firstOrFail();
     $messages = array(
-      'pastePassword.required' => 'Please enter a password',
+      'pastePassword.required' => __('edpaste.validation.error.password'),
     );
     $this->validate($request, [
       'pastePassword' => 'required',

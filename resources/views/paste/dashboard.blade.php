@@ -3,9 +3,9 @@
 @section('pagetitle') Dashboard - EdPaste @endsection
 
 @section('navbar')
-<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+<li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 @if (cas()->isAuthenticated())
-<li class="nav-item active"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
+<li class="nav-item active"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 {{--
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
 <li class="nav-item"><a href="/logout" class="nav-link">Logout <i>({{ User::getCurrentUser()->name }})</i></a></li>
@@ -33,12 +33,12 @@
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          <th>Title</th>
-          <th class="hidden-xs">Content</th>
+          <th>{{ __('edpaste.paste.title') }}</th>
+          <th class="hidden-xs">{{ __('edpaste.paste.content') }}</th>
           <th class="hidden-xs"></th>
           <th class="hidden-xs"></th>
-          <th>Views</th>
-          <th>Creation</th>
+          <th>{{ __('edpaste.paste.views') }}</th>
+          <th>{{ __('edpaste.paste.creation') }}</th>
           <th></th>
         </tr>
       </thead>
@@ -49,15 +49,15 @@
         <td class="hidden-xs"><i>@if (!$userPaste->noSyntax) <i class="fa fa-file-code-o"></i> &nbsp; @endif @if (strlen($userPaste->content) < 90) {{ $userPaste->content}} @else {{ mb_substr($userPaste->content,0,90,'UTF-8') }}... @endif</i></td>
         {{--  Bloc d'infos  --}}
         <td class="hidden-xs">
-          @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="Public"></i>
-          @elseif ($userPaste->privacy == "internal") <i class="fa fa-users fa-lg" data-toggle="tooltip" data-placement="bottom" title="Internal"></i>
-          @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="Password-protected"></i>
-          @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="Private"></i> @endif
+          @if ($userPaste->privacy == "link") <i class="fa fa-globe fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.privacy.link') }}"></i>
+          @elseif ($userPaste->privacy == "internal") <i class="fa fa-users fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.privacy.internal') }}"></i>
+          @elseif ($userPaste->privacy == "password") <i class="fa fa-key fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.privacy.password') }}"></i>
+          @elseif ($userPaste->privacy == "private") <i class="fa fa-user-secret fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.privacy.private') }}"></i> @endif
         </td>
         <td class="hidden-xs">
-          @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Never expires"></i>
-          @elseif ($userPaste->burnAfter == "1") <i class="fa fa-exclamation-circle fa-lg" data-toggle="tooltip" data-placement="bottom" title="Burn after reading"></i>
-          @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expired"></i>
+          @if ($userPaste->expiration == "0") <i class="fa fa-calendar-check-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.expiration.never') }}"></i>
+          @elseif ($userPaste->burnAfter == "1") <i class="fa fa-exclamation-circle fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.expiration.burn_after_reading') }}"></i>
+          @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.expired') }}"></i>
           @else <i class="fa fa-hourglass fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expiration set"></i>@endif
         </td>
         <td> {{ $userPaste->views }}</td>
@@ -74,7 +74,7 @@
               </button>
               <h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $userPaste->title }}</i>" ?</h4>
             </div>
-            <div class="modal-body">Are you sure? You <b>cannot</b> undo this!</div>
+            <div class="modal-body">@lang('edpaste.paste.confirm.delete')</div>
             <div class="modal-footer">
               <a class="btn btn-danger btn-sm" href="/users/delete/{{ $userPaste->link }}" role="button">Yes</a>
               <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>

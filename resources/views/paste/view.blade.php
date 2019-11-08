@@ -4,9 +4,9 @@
 @section('pagetitle') {{ $title }} - EdPaste @endsection
 
 @section('navbar')
-<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+<li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 @if (cas()->isAuthenticated())
-<li class="nav-item"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
+<li class="nav-item"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 {{--
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
 <li class="nav-item"><a href=" /logout" class="nav-link">Logout <i>({{ User::getCurrentUser()->name }})</i></a></li>
@@ -70,17 +70,17 @@
 	@if ($expiration == "Expired")
 	<div class="alert alert-info" role="alert">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<i>This paste has expired, however since you wrote it you may view it whenever you want.</i>
+		<i>{{ __('edpaste.paste.msg.expired.viewable') }}</i>
 	</div>
 	@elseif ($expiration == "Burn after reading (next time)")
 	<div class="alert alert-warning" role="alert">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<i>This paste is in burn after reading. From now, it could be viewed only one time.</i>
+		<i>{{ __('edpaste.paste.msg.burnafter.viewable') }}</i>
 	</div>
 	@elseif ($expiration == "Burn after reading")
 	<div class="alert alert-danger" role="alert">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<i><strong>Be careful!</strong> This paste is in burn after reading mode and you won't be able to see it again.</i>
+		<i>@lang('edpaste.paste.msg.burnafter.last.view')</i>
 	</div>
 	@endif
 	<div class="row">
@@ -101,7 +101,7 @@
 						</button>
 						<h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $title }}</i>" ?</h4>
 					</div>
-					<div class="modal-body">Are you sure? You <b>cannot</b> undo this!</div>
+					<div class="modal-body">@lang('edpaste.paste.confirm.delete')</div>
 					<div class="modal-footer">
 						<a class="btn btn-danger btn-sm" href="/users/delete/{{ $link }}" role="button">Yes</a>
 						<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -134,9 +134,9 @@
 	{{-- N'est formaté que si le SH est activé --}}
 	<div class="row" @if ($noSyntax == true) style="margin-bottom:20px;" @endif>
 		<div class="col-sm-12">
-			<label for="paste"><i>@if ($noSyntax == false) Syntax-highlighted @else Plain-text @endif</i></label>
-			@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">Raw paste</a> @endif </i>
-			@if ($sameUser) <i class="pull-right" style="margin-right: 10px;"><a href="/edit/{{ $link }}">Edit paste</a> @endif </i>
+			<label for="paste"><i>@if ($noSyntax == false) {{ __('edpaste.paste.syntax-highlighted') }} @else {{ __('edpaste.paste.plain-text') }} @endif</i></label>
+			@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">{{ __('edpaste.paste.raw') }}</a> @endif </i>
+			@if ($sameUser) <i class="pull-right" style="margin-right: 10px;"><a href="/edit/{{ $link }}">{{ __('edpaste.paste.edit') }}</a> @endif </i>
 			<pre id="paste"><code class="code">@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
 		</div>
 	</div>

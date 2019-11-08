@@ -3,9 +3,9 @@
 @section('pagetitle') Home - EdPaste @endsection
 
 @section('navbar')
-<li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+<li class="nav-item active"><a href="#" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 @if (cas()->isAuthenticated())
-<li class="nav-item"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
+<li class="nav-item"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 {{-- <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li> --}}
 {{--<li class="nav-item"><a href=" /logout" class="nav-link">Logout <i>({{ $user->name }})</i></a></li>--}}
 @else
@@ -35,8 +35,8 @@
 		<input style="display:none" type="password" name="fakepasswordremembered"/>
 		<div class="row">
 			<div class="form-group col-xs-12 @if ($errors->has('pasteTitle')) has-error @endif">
-				<label for="pasteTitle">Title</label>
-				<input type="text" class="form-control" name="pasteTitle" id="pasteTitle" placeholder="Title (optional)" maxlength="70" value="{{ old('pasteTitle') }}">
+				<label for="pasteTitle">{{ __('edpaste.paste.title') }}</label>
+				<input type="text" class="form-control" name="pasteTitle" id="pasteTitle" placeholder="{{ __('edpaste.paste.title.placeholder') }}" maxlength="70" value="{{ old('pasteTitle') }}">
 				@if ($errors->has('pasteTitle'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pasteTitle') }}</strong>
@@ -46,7 +46,7 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-xs-12 @if ($errors->has('pasteContent')) has-error @endif">
-				<label for="pasteContent">Content</label>
+				<label for="pasteContent">{{ __('edpaste.paste.content') }}</label>
 				<script type="text/javascript">
 					$(document).ready(function(){
 						$("#pasteContent").autoGrow();
@@ -62,24 +62,24 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-sm-3">
-				<label for="expire">Paste expiration</label>
+				<label for="expire">{{ __('edpaste.paste.expiration') }}</label>
 				<select class="form-control" name="expire" id="expire">
-					<option value="never" selected="selected">Never</option>
-					<option value="burn">Burn after reading</option>
-					<option value="10m">10 minutes</option>
-					<option value="1h">1 hour</option>
-					<option value="1d">1 day</option>
-					<option value="1w">1 week</option>
+					<option value="never" selected="selected">{{ __('edpaste.paste.option.expiration.never') }}</option>
+					<option value="burn">{{ __('edpaste.paste.option.expiration.burn_after_reading') }}</option>
+					<option value="10m">{{ __('edpaste.paste.option.expiration.10min') }}</option>
+					<option value="1h">{{ __('edpaste.paste.option.expiration.1h') }}</option>
+					<option value="1d">{{ __('edpaste.paste.option.expiration.1d') }}</option>
+					<option value="1w">{{ __('edpaste.paste.option.expiration.1w') }}</option>
 				</select>
 			</div>
 			<div class="form-group col-sm-3 @if ($errors->has('pastePassword')) has-error @endif">
-				<label for="privacy">Privacy</label>
+				<label for="privacy">{{ __('edpaste.paste.privacy') }}</label>
 				<select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
-					<option value="link">Unlisted, access with link</option>
-					<option value="internal">Internal</option>
-					<option value="password" @if ($errors->has('pastePassword')) selected="selected" @endif>Password-protected</option>
+					<option value="link">{{ __('edpaste.paste.option.privacy.link') }}</option>
+					<option value="internal">{{ __('edpaste.paste.option.privacy.internal') }}</option>
+					<option value="password" @if ($errors->has('pastePassword')) selected="selected" @endif>{{ __('edpaste.paste.option.privacy.password') }}</option>
 					@if (cas()->isAuthenticated())
-					<option value="private">Private, only me</option>
+					<option value="private">{{ __('edpaste.paste.option.privacy.private') }}</option>
 					@endif
 				</select>
 			</div>
@@ -103,9 +103,9 @@
 				</script>
 				{{-- La tooltip n'apparaît que pour les users non-id et le btn devient danger si y'a des erreurs --}}
 				<div class="checkbox">
-					<label><input type="checkbox" name="noSyntax">Disable syntax highlighting</label>
+					<label><input type="checkbox" name="noSyntax">{{ __('edpaste.paste.option.disable.syntax') }}</label>
 				</div>
-				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>Submit</button>
+				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>{{ __('edpaste.paste.submit') }}</button>
 			</div>
 		</div>
 

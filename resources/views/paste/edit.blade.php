@@ -1,12 +1,12 @@
 @extends('default')
 
-@section('pagetitle') Edit {{  $title  }} - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.title.edit', ['pastename' => $title]) }} - EdPaste @endsection
 
 @section('navbar')
-<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+<li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 {{--
 @if (cas()->isAuthenticated())
-<li class="nav-item"><a href="/users/dashboard" class="nav-link">Dashboard</a></li>
+<li class="nav-item"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
 <li class="nav-item"><a href=" /logout" class="nav-link">Logout <i>({{ User::getCurrentUser()->name }})</i></a></li>
 @else
