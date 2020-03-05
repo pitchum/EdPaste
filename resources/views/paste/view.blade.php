@@ -99,12 +99,12 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $title }}</i>" ?</h4>
+						<h4 class="modal-title" id="preview" style="word-wrap: break-word;">@lang('edpaste.paste.confirm.delete.title', ['pastename' => $title])</h4>
 					</div>
 					<div class="modal-body">@lang('edpaste.paste.confirm.delete')</div>
 					<div class="modal-footer">
-						<a class="btn btn-danger btn-sm" href="/users/delete/{{ $link }}" role="button">Yes</a>
-						<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
+						<a class="btn btn-danger btn-sm" href="/users/delete/{{ $link }}" role="button">{{ __('edpaste.button.yes') }}</a>
+						<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">{{ __('edpaste.button.no') }}</button>
 					</div>
 				</div>
 			</div>
@@ -119,14 +119,14 @@
 						$('[data-toggle="tooltip"]').tooltip()
 					})
 				</script>
-				<li><i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="Username"></i> <i class="username">{{ $username }}</i></li>
-				<li><i class="fa fa-calendar" data-toggle="tooltip" data-placement="bottom" title="Date of creation"></i> <i class="date" data-toggle="tooltip" data-placement="bottom" title="{{ $fulldate }}">{{ $date }}</i></li>
-				<li><i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="Times viewed"></i> <i>{{ $views }} view{{ $views == 1 ? '' : 's' }}</i></li>
+				<li><i class="fa fa-user" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.username') }}"></i> <i class="username">{{ $username }}</i></li>
+				<li><i class="fa fa-calendar" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.creation') }}"></i> <i class="date" data-toggle="tooltip" data-placement="bottom" title="{{ $fulldate }}">{{ $date }}</i></li>
+				<li><i class="fa fa-eye" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.view_count') }}"></i> <i>{{ trans_choice('edpaste.paste.views', $views, ['count' => $views]) }}</i></li>
 				{{-- Expiration cachée si xs --}}
-				<li @if ($expiration == "Never") class="hidden-xs" @endif><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="Expiration"></i> <i>{{ $expiration }}</i></li>
+				<li @if ($expiration == "Never") class="hidden-xs" @endif><i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.expiration') }}"></i> <i>@if ($expiration == "Never") {{ __('edpaste.paste.option.expiration.never') }} @else {{ $expiration }} @endif</i></li>
 
 				{{-- Privacy cachée si xs --}}
-				<li @if ($privacy == "Public") class="hidden-xs" @endif><i class="fa fa-lock" data-toggle="tooltip" data-placement="bottom" title="Privacy"></i> <i>{{ $privacy }}</i></li>
+				<li @if ($privacy == "Public") class="hidden-xs" @endif><i class="fa fa-lock" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.privacy') }}"></i> <i>{{ $privacy }}</i></li>
 			</ul>
 		</div>
 	</div>

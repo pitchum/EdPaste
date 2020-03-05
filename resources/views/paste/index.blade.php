@@ -52,7 +52,7 @@
 						$("#pasteContent").autoGrow();
 					});
 				</script>
-				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="Paste your text here..." style="font-family: monospace;">{{ old('pasteContent') }}</textarea>
+				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="{{ __('edpaste.paste.content.placeholder') }}" style="font-family: monospace;">{{ old('pasteContent') }}</textarea>
 				@if ($errors->has('pasteContent'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pasteContent') }}</strong>
@@ -85,8 +85,8 @@
 			</div>
 			{{-- Ce truc n'apparait que si "Password-protected" est séléctionné plus haut --}}
 			<div class="form-group col-sm-2 @if ($errors->has('pastePassword')) has-error @endif" id="passwordInput" @if (!$errors->has('pastePassword')) style="display:none;" @endif>
-				<label for="pastePassword">Password</label>
-				<input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="Enter a password..." maxlength="40">
+				<label for="pastePassword">{{ __('edpaste.password.title') }}</label>
+				<input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="{{ __('edpaste.password.field.placeholder') }}" maxlength="40">
 				@if ($errors->has('pastePassword'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pastePassword') }}</strong>
@@ -105,7 +105,7 @@
 				<div class="checkbox">
 					<label><input type="checkbox" name="noSyntax">{{ __('edpaste.paste.option.disable.syntax') }}</label>
 				</div>
-				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>{{ __('edpaste.paste.submit') }}</button>
+				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="{{ __('edpaste.paste.submit.tooltip') }}" @endif>{{ __('edpaste.paste.submit') }}</button>
 			</div>
 		</div>
 

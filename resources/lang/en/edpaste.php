@@ -4,6 +4,8 @@ return [
 
     'menu.home'                 => 'Home',
     'menu.dashboard'            => 'Dashboard',
+    'button.yes'  => 'Yes',
+    'button.no'   => 'No',
 
     'paste.title'               => 'Title',
     'paste.title.placeholder'   => 'Title (optional)',
@@ -12,6 +14,7 @@ return [
     'paste.expiration'          => 'Paste expiration',
     'paste.privacy'             => 'Privacy',
     'paste.option.disable.syntax' => 'Disable syntax highlighting',
+    'paste.submit.tooltip'      => 'Registered users have access to other privacy tools',
     'paste.submit'              => 'Submit',
 
 
@@ -30,6 +33,7 @@ return [
     /* Dashboard */
     'paste.views'               => 'Views',
     'paste.creation'            => 'Creation',
+    'paste.confirm.delete.title' => 'Delete "<i>{{ :pastename }}</i>"?',
     'paste.confirm.delete'      => 'Are you sure? You <strong>cannot</strong> undo this',
     'paste.option.expired'      => 'Expired',
 
@@ -41,6 +45,10 @@ return [
     'paste.plain-text'              => 'Plain-text',
     'paste.raw'                => 'Raw paste',
     'paste.edit'               => 'Edit paste',
+    'paste.view_count'         => 'Times viewed',
+    'paste.views'              => '{1} :count view|[2,*] :count views',
+    'paste.username'           => 'Username',
+    'password.title'           => 'Password',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Password prompt - EdPaste',

@@ -39,8 +39,8 @@
 
 		<div class="row">
 			<div class="form-group col-xs-12 @if ($errors->has('pasteTitle')) has-error @endif">
-				<label for="pasteTitle">Title</label>
-				<input type="text" class="form-control" name="pasteTitle" id="pasteTitle" placeholder="Title (optional)" maxlength="70" value="{{ old('pasteTitle') ? old('pasteTitle') : $title }}">
+				<label for="pasteTitle">{{ __('edpaste.paste.title') }}</label>
+				<input type="text" class="form-control" name="pasteTitle" id="pasteTitle" placeholder="{{ __('edpaste.paste.title.placeholder') }}" maxlength="70" value="{{ old('pasteTitle') ? old('pasteTitle') : $title }}">
 				@if ($errors->has('pasteTitle'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pasteTitle') }}</strong>
@@ -50,13 +50,13 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-xs-12 @if ($errors->has('pasteContent')) has-error @endif">
-				<label for="pasteContent">Content</label>
+				<label for="pasteContent">{{ __('edpaste.paste.content') }}</label>
 				<script type="text/javascript">
 					$(document).ready(function(){
 						$("#pasteContent").autoGrow();
 					});
 				</script>
-				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="Paste your text here..." style="font-family: monospace;">{{ old('pasteContent') ? old('pasteContent') : $content }}</textarea>
+				<textarea class="form-control input-sm" name="pasteContent" id="pasteContent" rows="15" placeholder="{{ __('edpaste.paste.content.placeholder') }}" style="font-family: monospace;">{{ old('pasteContent') ? old('pasteContent') : $content }}</textarea>
 				@if ($errors->has('pasteContent'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pasteContent') }}</strong>
@@ -66,15 +66,15 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-sm-3 @if ($errors->has('expire')) has-error @endif">
-				<label for="expire">Paste expiration</label>
+				<label for="expire">{{ __('edpaste.paste.expiration') }}</label>
 				<select class="form-control" name="expire" id="expire">
                     <option disabled selected></option>
-					<option value="never">Never</option>
-					<option value="burn">Burn after reading</option>
-					<option value="10m">10 minutes</option>
-					<option value="1h">1 hour</option>
-					<option value="1d">1 day</option>
-					<option value="1w">1 week</option>
+                                        <option value="never" selected="selected">{{ __('edpaste.paste.option.expiration.never') }}</option>
+                                        <option value="burn">{{ __('edpaste.paste.option.expiration.burn_after_reading') }}</option>
+                                        <option value="10m">{{ __('edpaste.paste.option.expiration.10min') }}</option>
+                                        <option value="1h">{{ __('edpaste.paste.option.expiration.1h') }}</option>
+                                        <option value="1d">{{ __('edpaste.paste.option.expiration.1d') }}</option>
+                                        <option value="1w">{{ __('edpaste.paste.option.expiration.1w') }}</option>
 				</select>
                 @if ($errors->has('expire'))
 				<span class="help-block">
@@ -83,18 +83,20 @@
 				@endif
 			</div>
 			<div class="form-group col-sm-3 @if ($errors->has('pastePassword')) has-error @endif">
-				<label for="privacy">Privacy</label>
-				<select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
-					<option value="link" {{ $privacy == "link" ? 'selected' : '' }}>Unlisted, access with link</option>
-					<option value="internal" {{ $privacy == "internal" ? 'selected' : '' }}>Internal</option>
-					<option value="password" {{ $privacy == "password" || $errors->has('pastePassword') ? 'selected' : '' }}>Password-protected</option>
-					<option value="private" {{ $privacy == "private" ? 'selected' : '' }}>Private, only me</option>
-				</select>
+                                <label for="privacy">{{ __('edpaste.paste.privacy') }}</label>
+                                <select class="form-control" name="privacy" id="privacy" onchange='checkvalue(this.value)'>
+                                        <option value="link">{{ __('edpaste.paste.option.privacy.link') }}</option>
+                                        <option value="internal">{{ __('edpaste.paste.option.privacy.internal') }}</option>
+                                        <option value="password" @if ($errors->has('pastePassword')) selected="selected" @endif>{{ __('edpaste.paste.option.privacy.password') }}</option>
+                                        @if (cas()->isAuthenticated())
+                                        <option value="private">{{ __('edpaste.paste.option.privacy.private') }}</option>
+                                        @endif
+                                </select>
 			</div>
 			{{-- Ce truc n'apparait que si "Password-protected" est séléctionné plus haut --}}
 			<div class="form-group col-sm-2 @if ($errors->has('pastePassword')) has-error @endif" id="passwordInput" @if (!$errors->has('pastePassword')) style="display:none;" @endif>
-				<label for="pastePassword">Password</label>
-				<input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="Enter a password..." maxlength="40">
+				<label for="pastePassword">{{ __('edpaste.password.title') }}</label>
+				<input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="{{ __('edpaste.password.field.placeholder') }}" maxlength="40">
 				@if ($errors->has('pastePassword'))
 				<span class="help-block">
 					<strong>{{ $errors->first('pastePassword') }}</strong>
@@ -111,9 +113,9 @@
 				</script>
 				{{-- La tooltip n'apparaît que pour les users non-id et le btn devient danger si y'a des erreurs --}}
 				<div class="checkbox">
-					<label><input type="checkbox" name="noSyntax" @if ($noSyntax) checked @endif>Disable syntax highlighting</label>
+					<label><input type="checkbox" name="noSyntax" @if ($noSyntax) checked @endif>{{ __('edpaste.paste.option.disable.syntax') }}</label>
 				</div>
-				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>Submit</button>
+				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="Registered users have access to other privacy tools" @endif>{{ __('edpaste.paste.submit') }}</button>
 			</div>
 		</div>
 

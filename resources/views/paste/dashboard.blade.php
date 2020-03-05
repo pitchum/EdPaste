@@ -37,7 +37,7 @@
           <th class="hidden-xs">{{ __('edpaste.paste.content') }}</th>
           <th class="hidden-xs"></th>
           <th class="hidden-xs"></th>
-          <th>{{ __('edpaste.paste.views') }}</th>
+          <th>{{ __('edpaste.paste.view_count') }}</th>
           <th>{{ __('edpaste.paste.creation') }}</th>
           <th></th>
         </tr>
@@ -62,7 +62,7 @@
         </td>
         <td> {{ $userPaste->views }}</td>
         {{-- Là on repasse à la date --}}
-        <td>{{ $userPaste->created_at->format('M j, Y') }}</td>
+        <td>{{ $userPaste->created_at->format('Y-m-d') }}</td>
         <td><button class="btn btn-danger btn-sm pull-right" type="button" data-toggle="modal" data-target="#delete{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->iteration }}"><i class="fa fa-trash-o"></i></button></td>
       </tr>
       <div class="modal fade" id="delete{{ $loop->iteration }}" tabindex="-1" role="dialog" aria-labelledby="preview" aria-hidden="true">
@@ -72,12 +72,12 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="preview" style="word-wrap: break-word;">Delete "<i>{{ $userPaste->title }}</i>" ?</h4>
+              <h4 class="modal-title" id="preview" style="word-wrap: break-word;">@lang('edpaste.paste.confirm.delete.title', ['pastename' => $userPaste->title])</h4>
             </div>
             <div class="modal-body">@lang('edpaste.paste.confirm.delete')</div>
             <div class="modal-footer">
-              <a class="btn btn-danger btn-sm" href="/users/delete/{{ $userPaste->link }}" role="button">Yes</a>
-              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
+              <a class="btn btn-danger btn-sm" href="/users/delete/{{ $userPaste->link }}" role="button">{{ __('edpaste.button.yes') }}</a>
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">{{ __('edpaste.button.no') }}</button>
             </div>
           </div>
         </div>

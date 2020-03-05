@@ -135,25 +135,25 @@ class PasteController extends Controller
     // On s'occupe des options de vie privée de la paste (TODO password)
     // https://stackoverflow.com/questions/30212390/laravel-middleware-return-variable-to-controller
     if ($paste->privacy == "private") {
-      if($isSameUser) $privacy = "Private";
+      if($isSameUser) $privacy = __('edpaste.paste.option.privacy.private');
       else abort('404');
     }
     elseif ($paste->privacy == "internal"){
       if (cas()->isAuthenticated()) {
-        $privacy = "Internal access";
+        $privacy = __('edpaste.paste.option.privacy.internal');
       } else {
         return abort('404');
       }
     }
     elseif ($paste->privacy == "password"){
-      $privacy = "Password-protected";
+      $privacy = __('edpaste.paste.option.privacy.password');
       if ($request->isMethod('post')) {
         if(!Hash::check(Input::get('pastePassword'), $paste->password)) return view('paste/password', ['link' => $paste->link, 'wrongPassword' => true]);
       }
       // Si l'user n'est pas le même et que la paste a été créée il y a plus de trois secondes :
       elseif(!$isSameUser && time() - $paste->created_at->timestamp > 3) return view('paste/password', ['link' => $paste->link]);
     }
-    elseif ($paste->privacy == "link") $privacy = "Public";
+    elseif ($paste->privacy == "link") $privacy = __('edpaste.paste.option.privacy.link');
     else die("Error.");
 
     // Ici on vérifie si le burn de la paste doit être supprimé (besoin de le faire après le check password)

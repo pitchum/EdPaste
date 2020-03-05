@@ -4,6 +4,8 @@ return [
 
     'menu.home'                 => 'Accueil',
     'menu.dashboard'            => 'Tableau de bord',
+    'button.yes'  => 'Oui',
+    'button.no'   => 'Non',
 
     'paste.title'               => 'Titre',
     'paste.title.placeholder'   => 'Nom du post-it (facultatif)',
@@ -12,6 +14,7 @@ return [
     'paste.expiration'          => 'Expiration du post-it',
     'paste.privacy'             => 'Type d\'accès',
     'paste.option.disable.syntax' => 'Désactiver le surlignage syntaxique',
+    'paste.submit.tooltip'      => 'Plus d\'options de visibilité sont disponibles pour les utilisateurs authentifés',
     'paste.submit'              => 'Soumettre',
 
 
@@ -30,6 +33,7 @@ return [
     /* Dashboard */
     'paste.views'               => 'Vues',
     'paste.creation'            => 'Création',
+    'paste.confirm.delete.title' => 'Supprimer "<i>:pastename</i>" ?',
     'paste.confirm.delete'      => 'Êtes vous sûr ? Il est <strong>impossible</strong> de revenir en arrière !',
     'paste.option.expired'      => 'Expiré',
 
@@ -39,8 +43,12 @@ return [
     'paste.msg.burnafter.last.view' => '<strong>Attention !</strong> Ce post-it va s\'autodétruire après lecture et vous ne pourrez plus le voir.',
     'paste.syntax-highlighted'      => 'Surlignage syntaxique',
     'paste.plain-text'              => 'Texte brut',
-    'paste.raw'                => 'Afficher',
-    'paste.edit'               => 'Modifier le post-it',
+    'paste.raw'                 => 'Afficher',
+    'paste.edit'                => 'Modifier le post-it',
+    'paste.view_count'          => 'Nombre de vues',
+    'paste.views'               => '{1} :count vue|[2,*] :count vues',
+    'paste.username'            => 'Auteur',
+    'password.title'              => 'Mot de passe',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Demande de mot de passe - Post-it',
