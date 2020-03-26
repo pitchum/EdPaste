@@ -103,7 +103,8 @@
 				</script>
 				{{-- La tooltip n'apparaît que pour les users non-id et le btn devient danger si y'a des erreurs --}}
 				<div class="checkbox">
-					<label><input type="checkbox" name="noSyntax">{{ __('edpaste.paste.option.disable.syntax') }}</label>
+
+					<label><input type="checkbox" name="noSyntax" checked="true">{{ __('edpaste.paste.option.disable.syntax') }}</label>
 				</div>
 				<button type="submit" id="submit" class="btn @if (count($errors) > 0) btn-danger @else btn-outline-success @endif  btn-lg" @if (!cas()->isAuthenticated()) data-toggle="tooltip" data-placement="top" title="{{ __('edpaste.paste.submit.tooltip') }}" @endif>{{ __('edpaste.paste.submit') }}</button>
 			</div>
