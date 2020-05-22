@@ -33,7 +33,7 @@ class EditPasteController extends Controller
       'privacy' => $paste->privacy,
       'date' => $paste->created_at->format('Y-m-d'),
       'fulldate' => $paste->created_at->format('Y-m-d H:i:s'),
-      'noSyntax' => $paste->noSyntax,
+      'syntaxHl' => $paste->syntaxHl,
     ]);
   }
 
@@ -90,7 +90,7 @@ class EditPasteController extends Controller
 		$paste->expiration = $timestampExp;
 		$paste->privacy = $privacy;
 		$paste->password = $password;
-		$paste->noSyntax = Input::has('noSyntax');
+		$paste->syntaxHl = Input::has('syntaxHl');
     $paste->burnAfter = $burnAfter;
 
     $paste->save();

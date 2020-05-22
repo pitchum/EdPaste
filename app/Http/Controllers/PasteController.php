@@ -91,7 +91,7 @@ class PasteController extends Controller
 			'expiration' => $timestampExp,
 			'privacy' => $privacy,
 			'password' => $password,
-			'noSyntax' => Input::has('noSyntax'),
+			'syntaxHl' => Input::has('syntaxHl'),
 			'burnAfter' => $burnAfter,
     ]);
 
@@ -177,7 +177,7 @@ class PasteController extends Controller
       'privacy' => $privacy,
       'date' => $paste->created_at->format('Y-m-d'),
       'fulldate' => $paste->created_at->format('Y-m-d H:i:s'),
-      'noSyntax' => $paste->noSyntax,
+      'syntaxHl' => $paste->syntaxHl,
     ]);
   }
 

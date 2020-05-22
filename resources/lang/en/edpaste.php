@@ -13,7 +13,7 @@ return [
     'paste.content.placeholder' => 'Paste your text here...',
     'paste.expiration'          => 'Paste expiration',
     'paste.privacy'             => 'Privacy',
-    'paste.option.disable.syntax' => 'Disable syntax highlighting',
+    'paste.option.enable.syntax' => 'Enable syntax highlighting',
     'paste.submit.tooltip'      => 'Registered users have access to other privacy tools',
     'paste.submit'              => 'Submit',
 

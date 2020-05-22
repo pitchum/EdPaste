@@ -22,7 +22,7 @@
 @section('style')
 <link rel="stylesheet" href="/highlight_styles/tomorrow.css">
 <style>
-	@if ($noSyntax == false)
+	@if ($syntaxHl == true)
 	pre {
 		overflow: auto;
 		word-wrap: normal;
@@ -55,7 +55,7 @@
 @endsection
 
 @section('script')
-@if ($noSyntax == false)
+@if ($syntaxHl == true)
 <script src="highlight.pack.js"></script>
 <script src="highlightjs-line-numbers.min.js"></script>
 <script>
@@ -132,12 +132,12 @@
 	</div>
 
 	{{-- N'est formaté que si le SH est activé --}}
-	<div class="row" @if ($noSyntax == true) style="margin-bottom:20px;" @endif>
+	<div class="row" @if ($syntaxHl == true) style="margin-bottom:20px;" @endif>
 		<div class="col-sm-12">
-			<label for="paste"><i>@if ($noSyntax == false) {{ __('edpaste.paste.syntax-highlighted') }} @else {{ __('edpaste.paste.plain-text') }} @endif</i></label>
+			<label for="paste"><i>@if ($syntaxHl == true) {{ __('edpaste.paste.syntax-highlighted') }} @else {{ __('edpaste.paste.plain-text') }} @endif</i></label>
 			@if ($privacy != "Password-protected") <i class="pull-right"><a href="/raw/{{ $link }}">{{ __('edpaste.paste.raw') }}</a> @endif </i>
 			@if ($sameUser) <i class="pull-right" style="margin-right: 10px;"><a href="/edit/{{ $link }}">{{ __('edpaste.paste.edit') }}</a> @endif </i>
-			<pre id="paste"><code class="code">@if ($noSyntax == true)<i>@endif{{ $content }} @if ($noSyntax == true)</i>@endif</code></pre>
+			<pre id="paste"><code class="code">@if ($syntaxHl == false)<i>@endif{{ $content }} @if ($syntaxHl == false)</i>@endif</code></pre>
 		</div>
 	</div>
 </div>

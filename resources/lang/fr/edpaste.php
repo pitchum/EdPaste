@@ -13,7 +13,7 @@ return [
     'paste.content.placeholder' => 'Collez votre texte ici...',
     'paste.expiration'          => 'Expiration du post-it',
     'paste.privacy'             => 'Type d\'accès',
-    'paste.option.disable.syntax' => 'Désactiver le surlignage syntaxique',
+    'paste.option.enable.syntax' => 'Activer le surlignage syntaxique',
     'paste.submit.tooltip'      => 'Plus d\'options de visibilité sont disponibles pour les utilisateurs authentifés',
     'paste.submit'              => 'Soumettre',
 
