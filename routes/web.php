@@ -17,6 +17,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'PasteController@index');
 Route::post('/', 'PasteController@submit');
+Route::get('/retryAfterAuth', 'PasteController@retryAfterAuth');
 Route::get('/{link}', 'PasteController@view')->where('link', '[a-zA-Z0-9]+');
 Route::post('/{link}', 'PasteController@view')->where('link', '[a-zA-Z0-9]+');
 Route::get('/edit/{link}', 'EditPasteController@index')->where('link', '[a-zA-Z0-9]+');

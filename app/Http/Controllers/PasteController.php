@@ -9,6 +9,7 @@ use App\User;
 use \Input;
 use \Hash;
 use Session;
+use Route;
 use Cookie;
 use DB;
 use \Carbon;
@@ -115,7 +116,10 @@ class PasteController extends Controller
       if ($paste->burnAfter == 0){
         if (time() > strtotime($paste->expiration)){
           if ($isSameUser) $expiration = "Expired";
-          else abort('404');
+          else {
+            $request->session()->flash("link", $link);
+            abort('404');
+          }
         }
         else $expiration = Carbon\Carbon::parse($paste->expiration)->diffForHumans();
       }
@@ -136,12 +140,16 @@ class PasteController extends Controller
     // https://stackoverflow.com/questions/30212390/laravel-middleware-return-variable-to-controller
     if ($paste->privacy == "private") {
       if($isSameUser) $privacy = __('edpaste.paste.option.privacy.private');
-      else abort('404');
+      else {
+        $request->session()->flash("link", $link);
+        abort('404');
+      }
     }
     elseif ($paste->privacy == "internal"){
       if (cas()->isAuthenticated()) {
         $privacy = __('edpaste.paste.option.privacy.internal');
       } else {
+        $request->session()->flash("link", $link);
         return abort('404');
       }
     }
@@ -330,4 +338,16 @@ class PasteController extends Controller
     }
     return response($paste->content, 200)->header('Content-Type', 'text/plain');
   }
+
+
+  public function retryAfterAuth(Request $request){
+    if (!cas()->isAuthenticated()) {
+        cas()->authenticate();
+    } else {
+      $link = session("link", "");
+      return redirect('/'.$link);
+    }
+  }
+
 }
+

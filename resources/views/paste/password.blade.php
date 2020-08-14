@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') {{ __('edpaste.page.password.prompt') }} @endsection
+@section('pagetitle') {{ __('edpaste.page.title.password.prompt') }} @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
@@ -27,7 +27,7 @@
             <input style="display:none" type="password" name="fakepasswordremembered"/>
             
             <div class="form-group @if (isset($wrongPassword)) has-error @endif" id="passwordInput">
-                <input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="{{ __('edpaste.password.prompt') }}" maxlength="40" autofocus="true">
+                <input type="password" class="form-control" name="pastePassword" id="pastePassword" placeholder="{{ __('edpaste.password.field.placeholder') }}" maxlength="40" autofocus="true">
                 <button type="submit" id="submit" class="btn @if (isset($wrongPassword)) btn-danger @else btn-outline-success @endif">{{ __('edpaste.password.submit') }}</button>
             </div>
         </form>

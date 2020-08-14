@@ -49,6 +49,9 @@ return [
     'paste.views'              => '{1} :count view|[2,*] :count views',
     'paste.username'           => 'Username',
     'password.title'           => 'Password',
+    'paste.notfound'           => 'Content may be not found or expired, or access may be denied. Please <a href="/users/dashboard">log-in here</a>',
+    'button.goto.home'         => 'Return to home page',
+    'button.goto.auth'         => 'Try authenticating first',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Password prompt - EdPaste',

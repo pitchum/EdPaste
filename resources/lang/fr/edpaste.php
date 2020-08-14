@@ -49,6 +49,9 @@ return [
     'paste.views'               => '{1} :count vue|[2,*] :count vues',
     'paste.username'            => 'Auteur',
     'password.title'              => 'Mot de passe',
+    'paste.notfound'           => 'Page non trouvée - Le post-it n\'existe pas, a expiré, ou nécessite une authentification.',
+    'button.goto.home'         => 'Retourner à la page d\'accueil',
+    'button.goto.auth'         => 'Essayez en vous authentifiant d\'abord',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Demande de mot de passe - Post-it',
