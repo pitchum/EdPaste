@@ -51,7 +51,7 @@ return [
     'password.title'              => 'Mot de passe',
     'paste.notfound'           => 'Page non trouvée - Le post-it n\'existe pas, a expiré, ou nécessite une authentification.',
     'button.goto.home'         => 'Retourner à la page d\'accueil',
-    'button.goto.auth'         => 'Essayez en vous authentifiant d\'abord',
+    'button.goto.auth'         => 'Vous êtes sûr·e de votre lien ? Cliquez ici pour vous authentifier !',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Demande de mot de passe - Post-it',

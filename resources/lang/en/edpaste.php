@@ -51,7 +51,7 @@ return [
     'password.title'           => 'Password',
     'paste.notfound'           => 'Content may be not found or expired, or access may be denied. Please <a href="/users/dashboard">log-in here</a>',
     'button.goto.home'         => 'Return to home page',
-    'button.goto.auth'         => 'Try authenticating first',
+    'button.goto.auth'         => 'If you\'re confident in your link, click here to authenticate!',
 
     /* Password prompt page */
     'page.title.password.prompt'  => 'Password prompt - EdPaste',
