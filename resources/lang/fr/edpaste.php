@@ -11,6 +11,7 @@ return [
 
     'menu.home'                 => 'Accueil',
     'menu.dashboard'            => 'Tableau de bord',
+    'menu.logout'               => 'Déconnexion',
     'button.yes'  => 'Oui',
     'button.no'   => 'Non',
 

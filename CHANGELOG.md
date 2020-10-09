@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Allow minimal branding (customizeable app name)
 - Misc translation fixes
 - Add more expiration options
+- Add logout button
 
 
 ## 1.1.1 - 2020-09-22

@@ -12,8 +12,7 @@
 */
 
 Auth::routes();
-// post workaround for logout
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@casLogout');
 
 Route::get('/', 'PasteController@index');
 Route::post('/', 'PasteController@submit');

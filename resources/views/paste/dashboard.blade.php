@@ -8,8 +8,8 @@
 <li class="nav-item active"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
 {{--
 <li class="nav-item"><a href="/users/account" class="nav-link">My Account</a></li>
-<li class="nav-item"><a href="/logout" class="nav-link">Logout <i>({{ User::getCurrentUser()->name }})</i></a></li>
 --}}
+<li class="nav-item"><a href="/logout" class="nav-link">{{ __('edpaste.menu.logout') }} <i>({{ cas()->getCurrentUser() }})</i></a></li>
 @else
 {{--
 <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>

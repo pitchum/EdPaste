@@ -11,6 +11,7 @@ return [
 
     'menu.home'                 => 'Home',
     'menu.dashboard'            => 'Dashboard',
+    'menu.logout'               => 'Logout',
     'button.yes'  => 'Yes',
     'button.no'   => 'No',
 

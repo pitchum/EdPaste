@@ -6,6 +6,7 @@
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
 @if (cas()->isAuthenticated())
 <li class="nav-item"><a href="/users/dashboard" class="nav-link">{{ __('edpaste.menu.dashboard') }}</a></li>
+<li class="nav-item"><a href=" /logout" class="nav-link">{{ __('edpaste.menu.logout') }} <i>({{ cas()->getCurrentUser() }})</i></a></li>
 @endif
 {{--
 @if (cas()->isAuthenticated())
