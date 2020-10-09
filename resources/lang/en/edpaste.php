@@ -15,6 +15,7 @@ return [
     'button.no'   => 'No',
 
     'paste.title'               => 'Title',
+    'paste.untitled'            => 'Untitled',
     'paste.title.placeholder'   => 'Title (optional)',
     'paste.content'             => 'Content',
     'paste.content.placeholder' => 'Paste your text here...',

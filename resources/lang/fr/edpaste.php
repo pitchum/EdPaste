@@ -15,6 +15,7 @@ return [
     'button.no'   => 'Non',
 
     'paste.title'               => 'Titre',
+    'paste.untitled'            => 'Sans titre',
     'paste.title.placeholder'   => 'Nom du post-it (facultatif)',
     'paste.content'             => 'Contenu',
     'paste.content.placeholder' => 'Collez votre texte ici...',

@@ -45,7 +45,7 @@ class EditPasteController extends Controller
       return abort('403');
     }
 
-    $title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
+    $title = (empty(trim(Input::get('pasteTitle')))) ? __('edpaste.paste.untitled') : Input::get('pasteTitle');
 
 		$expiration = Input::get('expire');
 		$privacy = Input::get('privacy');

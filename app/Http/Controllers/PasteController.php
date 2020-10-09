@@ -34,7 +34,7 @@ class PasteController extends Controller
 		}
 		$username = cas()->getCurrentUser();
 		$user = User::create_if_absent($username);
-		$title = (empty(trim(Input::get('pasteTitle')))) ? 'Untitled' : Input::get('pasteTitle');
+		$title = (empty(trim(Input::get('pasteTitle')))) ? __('edpaste.paste.untitled') : Input::get('pasteTitle');
 
 		$expiration = Input::get('expire');
 		$privacy = Input::get('privacy');
