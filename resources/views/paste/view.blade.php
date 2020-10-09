@@ -1,7 +1,7 @@
 
 @extends('default')
 
-@section('pagetitle') {{ $title }} - EdPaste @endsection
+@section('pagetitle') {{ $title }} - {{ config('app.name', 'EdPaste') }} @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>

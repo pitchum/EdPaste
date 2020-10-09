@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') {{ __('edpaste.page.title.notfound') }} - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.title.notfound') }} - {{ config('app.name', 'EdPaste') }} @endsection
 
 @section('navbar')
 
