@@ -80,6 +80,12 @@ class EditPasteController extends Controller
 			case '1w':
         $timestampExp = date('Y-m-d H:i:s', time()+604800);
         break;
+			case '1m':
+        $timestampExp = date('Y-m-d H:i:s', time()+2678400);
+        break;
+			case '3m':
+        $timestampExp = date('Y-m-d H:i:s', time()+8035200);
+        break;
 			default:
         die("User input error.");
         break;

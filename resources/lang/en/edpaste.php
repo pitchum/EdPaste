@@ -32,6 +32,8 @@ return [
     'paste.option.expiration.1h'    => '1 hour',
     'paste.option.expiration.1d'    => '1 day',
     'paste.option.expiration.1w'    => '1 week',
+    'paste.option.expiration.1m'    => '1 month',
+    'paste.option.expiration.3m'    => '3 months',
 
     'paste.option.privacy.link'     => 'Unlisted, access with link',
     'paste.option.privacy.internal' => 'Internal, authenticated users with link',

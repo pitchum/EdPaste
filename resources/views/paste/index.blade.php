@@ -70,6 +70,8 @@
 					<option value="1h">{{ __('edpaste.paste.option.expiration.1h') }}</option>
 					<option value="1d">{{ __('edpaste.paste.option.expiration.1d') }}</option>
 					<option value="1w">{{ __('edpaste.paste.option.expiration.1w') }}</option>
+					<option value="1m">{{ __('edpaste.paste.option.expiration.1m') }}</option>
+					<option value="3m">{{ __('edpaste.paste.option.expiration.3m') }}</option>
 				</select>
 			</div>
 			<div class="form-group col-sm-3 @if ($errors->has('pastePassword')) has-error @endif">
