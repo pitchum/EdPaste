@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') Register - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.title.register') }} - EdPaste @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>

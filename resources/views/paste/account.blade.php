@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') My Account - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.title.account') }} - EdPaste @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>

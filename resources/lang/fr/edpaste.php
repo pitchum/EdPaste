@@ -2,6 +2,13 @@
 
 return [
 
+    'page.title.dashboard'      => 'Tableau de bord',
+    'page.title.home'           => 'Accueil',
+    'page.title.notfound'       => 'Non trouvé',
+    'page.title.account'        => 'Mon compte',
+    'page.title.login'          => 'Authenfitication',
+    'page.title.register'       => 'Enregistrement',
+
     'menu.home'                 => 'Accueil',
     'menu.dashboard'            => 'Tableau de bord',
     'button.yes'  => 'Oui',

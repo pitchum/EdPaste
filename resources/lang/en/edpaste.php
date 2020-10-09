@@ -2,6 +2,13 @@
 
 return [
 
+    'page.title.dashboard'      => 'Dashboard',
+    'page.title.home'           => 'Home',
+    'page.title.notfound'       => 'Not found',
+    'page.title.account'        => 'My Account',
+    'page.title.login'          => 'Login',
+    'page.title.register'       => 'Register',
+
     'menu.home'                 => 'Home',
     'menu.dashboard'            => 'Dashboard',
     'button.yes'  => 'Yes',

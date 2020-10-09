@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') Dashboard - EdPaste @endsection
+@section('pagetitle') {{ __('edpaste.page.title.dashboard') }} - EdPaste @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>
@@ -29,7 +29,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<h2 class="text-center display-4">Dashboard</h2>
+		<h2 class="text-center display-4">{{ __('edpaste.page.title.dashboard') }}</h2>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
