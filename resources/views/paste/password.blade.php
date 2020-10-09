@@ -1,6 +1,6 @@
 @extends('default')
 
-@section('pagetitle') {{ __('edpaste.page.title.password.prompt') }} @endsection
+@section('pagetitle') {{ __('edpaste.page.title.password.prompt') }} - {{ config('app.name', 'EdPaste') }} @endsection
 
 @section('navbar')
 <li class="nav-item"><a href="/" class="nav-link">{{ __('edpaste.menu.home') }}</a></li>

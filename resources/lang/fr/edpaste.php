@@ -61,12 +61,12 @@ return [
     'button.goto.auth'         => 'Vous êtes sûr·e de votre lien ? Cliquez ici pour vous authentifier !',
 
     /* Password prompt page */
-    'page.title.password.prompt'  => 'Demande de mot de passe - Post-it',
+    'page.title.password.prompt'  => 'Demande de mot de passe',
     'password.field.placeholder'  => 'Entrez le mot de passe',
     'password.submit'             => 'Soumettre',
 
     /* Edit paste page */
-    'page.title.edit'  => 'Edition :pastename - Post-it',
+    'page.title.edit'  => 'Edition :pastename',
 
     /* Validation messages */
     'validation.error.password'  => 'Veuillez saisir un mot de passe',

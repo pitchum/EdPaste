@@ -61,12 +61,12 @@ return [
     'button.goto.auth'         => 'If you\'re confident in your link, click here to authenticate!',
 
     /* Password prompt page */
-    'page.title.password.prompt'  => 'Password prompt - EdPaste',
+    'page.title.password.prompt'  => 'Password prompt',
     'password.field.placeholder'  => 'Enter paste pasword',
     'password.submit'             => 'Submit',
 
     /* Edit paste page */
-    'page.title.edit'  => 'Edit :pastename - EdPaste',
+    'page.title.edit'  => 'Edit :pastename',
 
     /* Validation messages */
     'validation.error.password'  => 'Please enter a password please',
