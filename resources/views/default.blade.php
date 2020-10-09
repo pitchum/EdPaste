@@ -49,7 +49,7 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<h5 class="text-center"><small><i>Made by Pierre T. - <a href="https://github.com/Edraens" target="_blank">Edraens</a>, 2016</i></small></h5>
+				<h5 class="text-center"><small><i>Made by Pierre T. - <a href="https://github.com/Edraens" target="_blank">Edraens</a>, 2016, adapté par Easter-Eggs et DSI EHESS</i></small></h5>
 			</div>
 		</div>
 	</footer>
