@@ -60,7 +60,7 @@
           @elseif (time() > strtotime($userPaste->expiration)) <i class="fa fa-calendar-times-o fa-lg" data-toggle="tooltip" data-placement="bottom" title="{{ __('edpaste.paste.option.expired') }}"></i>
           @else <i class="fa fa-hourglass fa-lg" data-toggle="tooltip" data-placement="bottom" title="Expiration set"></i>@endif
         </td>
-        <td> {{ $userPaste->views }}</td>
+        <td class="pull-right"> {{ $userPaste->views }}</td>
         {{-- Là on repasse à la date --}}
         <td>{{ $userPaste->created_at->format('Y-m-d') }}</td>
         <td><button class="btn btn-danger btn-sm pull-right" type="button" data-toggle="modal" data-target="#delete{{ $loop->iteration }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->iteration }}"><i class="fa fa-trash-o"></i></button></td>
