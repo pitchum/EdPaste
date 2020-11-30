@@ -69,6 +69,12 @@ class PasteController extends Controller
 			case '1w':
         $timestampExp = date('Y-m-d H:i:s', time()+604800);
         break;
+			case '1m':
+        $timestampExp = date('Y-m-d H:i:s', time()+2678400);
+        break;
+			case '3m':
+        $timestampExp = date('Y-m-d H:i:s', time()+8035200);
+        break;
 			default:
         die("User input error.");
         break;
@@ -133,7 +139,7 @@ class PasteController extends Controller
       }
     }
     // Petite vérification au cas où l'admin n'ait pas migrate
-    elseif ($paste->expiration == "10m" || $paste->expiration == "1h" || $paste->expiration == "1d" || $paste->expiration == "1w" || $paste->expiration == "never" || $paste->expiration == "burn") die("Paste expiration error. Please make sure you have the latest commit of EdPaste and run 'php artisan migrate'.");
+    elseif ($paste->expiration == "10m" || $paste->expiration == "1h" || $paste->expiration == "1d" || $paste->expiration == "1w" || $paste->expiration == "1m" || $paste->expiration == "3m" || $paste->expiration == "never" || $paste->expiration == "burn") die("Paste expiration error. Please make sure you have the latest commit of EdPaste and run 'php artisan migrate'.");
     else $expiration = "Never";
 
     // On s'occupe des options de vie privée de la paste (TODO password)
@@ -244,6 +250,14 @@ class PasteController extends Controller
     }
     elseif($paste->expiration == "1w") {
       if ($diffTimestamp > 604800) $expired = true;
+      else $expired = false;
+    }
+    elseif($paste->expiration == "1m") {
+      if ($diffTimestamp > 2678400) $expired = true;
+      else $expired = false;
+    }
+    elseif($paste->expiration == "3m") {
+      if ($diffTimestamp > 8035200) $expired = true;
       else $expired = false;
     }
     elseif($paste->expiration == "expired" || time() > strtotime($paste->expiration)) {
